@@ -60,6 +60,21 @@
             <artifactId>velocity</artifactId>
             <version>1.7</version>
         </dependency>
+
+
+		<!-- DEPENDENCIAS PARA PRUEBAS UNITARIAS -->
+		<dependency>
+			<groupId>org.springframework.restdocs</groupId>
+			<artifactId>spring-restdocs-mockmvc</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+
     </dependencies>
 
 	<build>
