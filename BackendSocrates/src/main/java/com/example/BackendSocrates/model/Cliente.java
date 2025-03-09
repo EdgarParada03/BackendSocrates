@@ -1,5 +1,6 @@
 package com.example.BackendSocrates.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -15,6 +16,7 @@ public class Cliente {   //FALTA PONER EL EXTENDS DE PERSONA
     private String tipoServicio;
 
     @Column(name = "fecha_registro")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
     private Date fechaRegistro;
 
     public Cliente() {
