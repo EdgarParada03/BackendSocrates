@@ -13,6 +13,7 @@ public class Persona {
     @Column(name = "nombre")
     private String nombre;
 
+
     @Column(name = "numero_documento")
     private String numeroDocumento;
 

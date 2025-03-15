@@ -43,6 +43,7 @@ public class PersonaController {
     }
 
 
+
     // Actualizar persona
     @PutMapping("/personas/{id}")
     public ResponseEntity<Persona> updatePersona(@PathVariable Long id, @RequestBody Persona personaDetails) {
