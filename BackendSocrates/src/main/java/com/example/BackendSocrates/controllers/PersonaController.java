@@ -42,6 +42,7 @@ public class PersonaController {
         return ResponseEntity.ok(persona);
     }
 
+
     // Actualizar persona
     @PutMapping("/personas/{id}")
     public ResponseEntity<Persona> updatePersona(@PathVariable Long id, @RequestBody Persona personaDetails) {

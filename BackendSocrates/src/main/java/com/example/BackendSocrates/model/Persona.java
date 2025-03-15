@@ -22,6 +22,7 @@ public class Persona {
     @Column(name = "direccion")  // Corregida la tilde
     private String direccion;
 
+
     @Column(name = "correo")
     private String correo;
 
