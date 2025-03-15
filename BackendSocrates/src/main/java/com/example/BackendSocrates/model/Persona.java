@@ -13,6 +13,8 @@ public class Persona {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "tipo_documento")
+    private String tipoDocumento;
 
     @Column(name = "numero_documento")
     private String numeroDocumento;
@@ -20,33 +22,36 @@ public class Persona {
     @Column(name = "telefono")
     private String telefono;
 
-    @Column(name = "direccion")  // Corregida la tilde
+    @Column(name = "direccion")
     private String direccion;
-
 
     @Column(name = "correo")
     private String correo;
 
     @Column(name = "estado")
-    private Boolean estado; // Cambio de `boolean` a `Boolean`
+    private Boolean estado;
 
-    @Column(name = "cargo") // Corregido `@JoinColumn`
+    @Column(name = "sexo")
+    private String sexo;
+
+    @Column(name = "cargo")
     private String cargo;
 
     public Persona() {}
 
-    public Persona(long id, String nombre, String numeroDocumento, String telefono, String direccion, String correo, Boolean estado, String cargo) {
+    public Persona(long id, String nombre, String tipoDocumento, String numeroDocumento, String telefono, String direccion, String correo, Boolean estado, String sexo, String cargo) {
         this.id = id;
         this.nombre = nombre;
+        this.tipoDocumento = tipoDocumento;
         this.numeroDocumento = numeroDocumento;
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;
         this.estado = estado;
+        this.sexo = sexo;
         this.cargo = cargo;
     }
 
-    // Getters y Setters
     public long getId() {
         return id;
     }
@@ -61,6 +66,14 @@ public class Persona {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     public String getNumeroDocumento() {
@@ -101,6 +114,14 @@ public class Persona {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getCargo() {

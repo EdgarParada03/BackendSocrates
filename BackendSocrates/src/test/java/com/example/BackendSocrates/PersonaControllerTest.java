@@ -35,8 +35,8 @@ public class PersonaControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    Persona persona1 = new Persona(1L, "Juan Perez", "12345678", "3112233445", "Calle 123", "juan@mail.com", true, "Ingeniero");
-    Persona persona2 = new Persona(2L, "Maria Lopez", "87654321", "3223344556", "Carrera 456", "maria@mail.com", true, "Analista");
+    Persona persona1 = new Persona(1L, "Juan Perez","Cedula", "12345678", "3112233445", "Calle 123", "juan@mail.com", true,"masculino", "Ingeniero");
+    Persona persona2 = new Persona(1L, "Cristian","TI", "12345678", "3112233445", "Calle 123", "juan@mail.com", true,"masculino", "Ingeniero");
 
     @Test
     public void testGetAllPersonas() throws Exception {
@@ -45,7 +45,7 @@ public class PersonaControllerTest {
         mockMvc.perform(get("/api/v1/personas"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].nombre").value("Juan Perez"))
-                .andExpect(jsonPath("$[1].nombre").value("Maria Lopez"));
+                .andExpect(jsonPath("$[1].nombre").value("Cristian"));
     }
 
     @Test
@@ -74,7 +74,7 @@ public class PersonaControllerTest {
 
     @Test
     public void testUpdatePersona() throws Exception {
-        Persona personaActualizada = new Persona(1L, "Juan Perez", "12345678", "3112233445", "Av. Principal 789", "juanp@mail.com", false, "Gerente");
+        Persona personaActualizada = new Persona(1L, "Juan Perez","TI", "12345678", "3112233445", "Av. Principal 789", "juanp@mail.com", false,"Mujer", "Gerente");
 
         Mockito.when(personaRepository.findById(1L)).thenReturn(Optional.of(persona1));
         Mockito.when(personaRepository.save(any(Persona.class))).thenReturn(personaActualizada);

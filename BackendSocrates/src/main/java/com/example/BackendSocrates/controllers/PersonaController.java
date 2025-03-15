@@ -53,10 +53,12 @@ public class PersonaController {
         // Actualizando los atributos de Persona
         persona.setNombre(personaDetails.getNombre());
         persona.setNumeroDocumento(personaDetails.getNumeroDocumento());
+        persona.setTipoDocumento(personaDetails.getTipoDocumento());
         persona.setTelefono(personaDetails.getTelefono());
         persona.setDireccion(personaDetails.getDireccion());
         persona.setCorreo(personaDetails.getCorreo());
         persona.setEstado(personaDetails.getEstado());
+        persona.setSexo(personaDetails.getSexo());
         persona.setCargo(personaDetails.getCargo());
 
         Persona updatedPersona = personaRepository.save(persona);
