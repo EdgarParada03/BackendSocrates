@@ -45,7 +45,17 @@ public class ClienteController {
         Cliente cliente = clienteRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Cliente not exist with id :" + id));
 
-        //AQUI PONER LOS OTROS ATRIBUTOS DE PERSONA
+        ////
+        cliente.setNombre(clienteDetails.getNombre());
+        cliente.setNumeroDocumento(clienteDetails.getNumeroDocumento());
+        cliente.setTelefono(clienteDetails.getTelefono());
+        cliente.setDireccion(clienteDetails.getDireccion());
+        cliente.setCorreo(clienteDetails.getCorreo());
+        cliente.setEstado(clienteDetails.getEstado());
+        cliente.setCargo(clienteDetails.getCargo());
+        cliente.setSexo(clienteDetails.getSexo());
+        cliente.setTipoDocumento(clienteDetails.getTipoDocumento());
+        //////
 
         cliente.setTipoServicio(clienteDetails.getTipoServicio());
         cliente.setFechaRegistro(clienteDetails.getFechaRegistro());
