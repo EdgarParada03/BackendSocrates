@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity(name = "clientes")
-public class Cliente {   //FALTA PONER EL EXTENDS DE PERSONA
+public class Cliente extends Persona{   //FALTA PONER EL EXTENDS DE PERSONA
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +22,10 @@ public class Cliente {   //FALTA PONER EL EXTENDS DE PERSONA
     public Cliente() {
     }
 
-    public Cliente(long id, String tipoServicio, Date fechaRegistro) {
-        this.id = id;
+
+    public Cliente(long id, String nombre, String tipoDocumento, String numeroDocumento, String telefono, String direccion, String correo, Boolean estado, String sexo, String cargo, long id1, String tipoServicio, Date fechaRegistro) {
+        super(id, nombre, tipoDocumento, numeroDocumento, telefono, direccion, correo, estado, sexo, cargo);
+        this.id = id1;
         this.tipoServicio = tipoServicio;
         this.fechaRegistro = fechaRegistro;
     }
