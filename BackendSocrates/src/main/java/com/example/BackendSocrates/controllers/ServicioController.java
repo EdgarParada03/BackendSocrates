@@ -56,6 +56,8 @@ public class ServicioController {
         servicio.setEstado(servicioDetails.getEstado());
         servicio.setTipoPlan(servicioDetails.getTipoPlan());
         //ESPACIO PAL TECNICO
+        servicio.setTecnico(servicioDetails.getTecnico());
+        //
         servicio.setCliente(servicioDetails.getCliente());
 
         Servicio updateServicio = servicioRepository.save(servicio);
