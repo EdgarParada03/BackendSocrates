@@ -28,9 +28,9 @@ public class Servicio {
     @Column(name = "tipo_plan")
     private TipoPlan tipoPlan;
 
-//    @OneToOne //REVISAR ESTA RELACION
-//    @Column(name = "tecnico")
-//    private Tecnico tecnico;
+    @OneToOne //REVISAR ESTA RELACION
+    @Column(name = "tecnico")
+    private Tecnico tecnico;
 
     @OneToOne //REVISAR ESTA RELACION
     @Column(name = "cliente")
@@ -39,13 +39,14 @@ public class Servicio {
     public Servicio() {
     }
 
-    public Servicio(long id, Date fechaServicio, String descripcion, Time horaServicio, String estado, TipoPlan tipoPlan, Cliente cliente) {
+    public Servicio(long id, Date fechaServicio, String descripcion, Time horaServicio, String estado, TipoPlan tipoPlan, Tecnico tecnico, Cliente cliente) {
         this.id = id;
         this.fechaServicio = fechaServicio;
         this.descripcion = descripcion;
         this.horaServicio = horaServicio;
         this.estado = estado;
         this.tipoPlan = tipoPlan;
+        this.tecnico = tecnico;
         this.cliente = cliente;
     }
 
@@ -103,5 +104,13 @@ public class Servicio {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Tecnico getTecnico() {
+        return tecnico;
+    }
+
+    public void setTecnico(Tecnico tecnico) {
+        this.tecnico = tecnico;
     }
 }
