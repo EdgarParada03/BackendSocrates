@@ -11,9 +11,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.BackendSocrates.controllers.SecretariaController;
-import com.example.BackendSocrates.model.Secretaria;
-import com.example.BackendSocrates.repositories.SecretariaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
