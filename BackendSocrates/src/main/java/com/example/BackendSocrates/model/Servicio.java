@@ -1,9 +1,10 @@
 package com.example.BackendSocrates.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity(name = "servicios")
 public class Servicio {
@@ -12,34 +13,36 @@ public class Servicio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "fecha_servicio")
-    private Date fechaServicio;
+    @Column(name = "fecha_servicio", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "UTC")
+    private LocalDate fechaServicio;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
-    @Column(name = "hora_servicio")
-    private Time horaServicio;
+    @Column(name = "hora_servicio", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
+    private LocalTime horaServicio;
 
-    @Column(name = "estado")
+    @Column(name = "estado", nullable = false)
     private String estado;
 
-    @OneToOne //REVISAR ESTA RELACION
-    @Column(name = "tipo_plan")
+    @OneToOne(optional = false)
+    @JoinColumn(name = "tipo_plan_id", nullable = false)
     private TipoPlan tipoPlan;
 
-    @OneToOne //REVISAR ESTA RELACION
-    @Column(name = "tecnico")
+    @OneToOne(optional = false)
+    @JoinColumn(name = "tecnico_id", nullable = false)
     private Tecnico tecnico;
 
-    @OneToOne //REVISAR ESTA RELACION
-    @Column(name = "cliente")
+    @OneToOne(optional = false)
+    @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
     public Servicio() {
     }
 
-    public Servicio(long id, Date fechaServicio, String descripcion, Time horaServicio, String estado, TipoPlan tipoPlan, Tecnico tecnico, Cliente cliente) {
+    public Servicio(long id, LocalDate fechaServicio, String descripcion, LocalTime horaServicio, String estado, TipoPlan tipoPlan, Tecnico tecnico, Cliente cliente) {
         this.id = id;
         this.fechaServicio = fechaServicio;
         this.descripcion = descripcion;
@@ -50,6 +53,7 @@ public class Servicio {
         this.cliente = cliente;
     }
 
+    // Getters y Setters...
     public long getId() {
         return id;
     }
@@ -58,11 +62,11 @@ public class Servicio {
         this.id = id;
     }
 
-    public Date getFechaServicio() {
+    public LocalDate getFechaServicio() {
         return fechaServicio;
     }
 
-    public void setFechaServicio(Date fechaServicio) {
+    public void setFechaServicio(LocalDate fechaServicio) {
         this.fechaServicio = fechaServicio;
     }
 
@@ -74,11 +78,11 @@ public class Servicio {
         this.descripcion = descripcion;
     }
 
-    public Time getHoraServicio() {
+    public LocalTime getHoraServicio() {
         return horaServicio;
     }
 
-    public void setHoraServicio(Time horaServicio) {
+    public void setHoraServicio(LocalTime horaServicio) {
         this.horaServicio = horaServicio;
     }
 

@@ -48,7 +48,6 @@ public class TipoPlanController {
         TipoPlan tipoPlan = tipoPlanRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("TipoPlan not exist with id :" + id));
 
-        //AQUI PONER LOS OTROS ATRIBUTOS DE PERSONA
 
         tipoPlan.setNombre(tipoPlanDetails.getNombre());
         tipoPlan.setDescripcion(tipoPlanDetails.getDescripcion());

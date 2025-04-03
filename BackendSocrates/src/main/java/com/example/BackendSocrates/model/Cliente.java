@@ -2,30 +2,29 @@ package com.example.BackendSocrates.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-
 import java.util.Date;
 
 @Entity(name = "clientes")
-public class Cliente extends Persona{   //FALTA PONER EL EXTENDS DE PERSONA
+public class Cliente extends Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "tipo_servicio")
+    @Column(name = "tipo_servicios")
     private String tipoServicio;
 
     @Column(name = "fecha_registro")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date fechaRegistro;
 
     public Cliente() {
     }
 
-
-    public Cliente(long id, String nombre, String tipoDocumento, String numeroDocumento, String telefono, String direccion, String correo, Boolean estado, String sexo, String cargo, long id1, String tipoServicio, Date fechaRegistro) {
+    public Cliente(long id, String nombre, String tipoDocumento, String numeroDocumento, String telefono, String direccion,
+                   String correo, Boolean estado, String sexo, String cargo, String tipoServicio, Date fechaRegistro) {
         super(id, nombre, tipoDocumento, numeroDocumento, telefono, direccion, correo, estado, sexo, cargo);
-        this.id = id1;
+        this.id = id;
         this.tipoServicio = tipoServicio;
         this.fechaRegistro = fechaRegistro;
     }
