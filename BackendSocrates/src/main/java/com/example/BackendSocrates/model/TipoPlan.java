@@ -24,6 +24,7 @@ public class TipoPlan {
     public TipoPlan() {
     }
 
+
     public TipoPlan(long id, String nombre, String descripcion, double precio, boolean estado) {
         this.id = id;
         this.nombre = nombre;

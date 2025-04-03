@@ -13,6 +13,7 @@ public class Tecnico extends Persona {
 
     public Tecnico() {}
 
+
     public Tecnico(long id, String nombre, String tipoDocumento, String numeroDocumento, String telefono, String direccion, String correo, Boolean estado, String sexo, String cargo, String especialidad) {
         super(id, nombre, tipoDocumento, numeroDocumento, telefono, direccion, correo, estado, sexo, cargo);
         this.especialidad = especialidad;
