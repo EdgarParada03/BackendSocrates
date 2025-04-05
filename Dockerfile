@@ -1,4 +1,4 @@
-FROM amazoncorretto:22.0.2-alpine-jdk
+FROM eclipse-temurin:22-jdk-alpine
 
 COPY target/BackendSocrates-0.0.1-SNAPSHOT.jar app.jar
 
