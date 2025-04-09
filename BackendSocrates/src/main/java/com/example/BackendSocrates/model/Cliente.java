@@ -18,7 +18,6 @@ public class Cliente extends Persona {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date fechaRegistro;
 
-
     public Cliente() {
     }
 
@@ -30,10 +29,12 @@ public class Cliente extends Persona {
         this.fechaRegistro = fechaRegistro;
     }
 
+    @Override
     public long getId() {
         return id;
     }
 
+    @Override
     public void setId(long id) {
         this.id = id;
     }

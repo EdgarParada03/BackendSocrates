@@ -15,16 +15,14 @@ public class ServicioService {
     private servicioRepository servicioRepository;
 
     public Servicio registrarServicio(Servicio servicio) {
-        // Validaciones básicas
-        if (servicio.getTecnico() == null) {
-            throw new RuntimeException("El servicio debe tener un técnico asignado");
+        if (servicio.getTecnico() == null || servicio.getTecnico().getId() == 0) {
+            throw new RuntimeException("El servicio debe tener un técnico asignado con ID válido");
         }
 
         if (servicio.getHoraServicio() == null) {
             throw new RuntimeException("La hora del servicio es obligatoria");
         }
 
-        // Validar horario laboral (8:00 - 18:00)
         LocalTime horaInicio = servicio.getHoraServicio();
         LocalTime horaFin = horaInicio.plusMinutes(30);
 
@@ -32,7 +30,6 @@ public class ServicioService {
             throw new RuntimeException("El horario del servicio debe estar entre las 8:00 y las 18:00");
         }
 
-        // Buscar servicios en el rango de tiempo (hora ± 30 minutos)
         LocalTime rangoInicio = horaInicio.minusMinutes(30);
         LocalTime rangoFin = horaFin.plusMinutes(30);
 
@@ -43,7 +40,6 @@ public class ServicioService {
                 rangoFin
         );
 
-        // Verificar si hay servicios que se solapan
         for (Servicio existente : serviciosExistentes) {
             LocalTime inicioExistente = existente.getHoraServicio();
             LocalTime finExistente = inicioExistente.plusMinutes(30);
