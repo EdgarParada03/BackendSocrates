@@ -27,7 +27,7 @@ public class Servicio {
     @Column(name = "estado", nullable = false)
     private String estado;
 
-    @ManyToOne(optional = false) // 🔁 corregido
+    @ManyToOne(optional = false)
     @JoinColumn(name = "tipo_plan_id", nullable = false)
     private TipoPlan tipoPlan;
 
@@ -53,7 +53,6 @@ public class Servicio {
         this.cliente = cliente;
     }
 
-    // Getters y Setters
     public long getId() {
         return id;
     }
