@@ -13,10 +13,12 @@ import java.util.List;
 @Repository
 public interface servicioRepository extends JpaRepository<Servicio, Long> {
 
-    @Query("SELECT s FROM servicios s WHERE s.tecnico.id = :tecnicoId " +
+    @Query("SELECT s FROM servicios s " +
+            "WHERE s.tecnico.id = :tecnicoId " +
             "AND s.fechaServicio = :fecha " +
-            "AND s.horaServicio < :horaFin " +
-            "AND s.horaServicio.plusMinutes(30) > :horaInicio")
+            "AND ((s.horaServicio <= :horaInicio AND s.horaServicio.plusMinutes(30) > :horaInicio) " +
+            "OR (s.horaServicio < :horaFin AND s.horaServicio.plusMinutes(30) >= :horaFin) " +
+            "OR (s.horaServicio >= :horaInicio AND s.horaServicio.plusMinutes(30) <= :horaFin))")
     List<Servicio> findOverlappingServices(
             @Param("tecnicoId") Long tecnicoId,
             @Param("fecha") LocalDate fecha,
