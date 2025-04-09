@@ -40,11 +40,11 @@ public class ServicioController {
         return ResponseEntity.ok(servicioService.obtenerPorId(id));
     }
 
-//    @DeleteMapping("/servicios/{id}")
-//    public ResponseEntity<Map<String, Boolean>> deleteServicio(@PathVariable Long id) {
-//        servicioRepository.deleteById(id);
-//        Map<String, Boolean> response = new HashMap<>();
-//        response.put("deleted", true);
-//        return ResponseEntity.ok(response);
-//    }
+    @DeleteMapping("/servicios/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteServicio(@PathVariable Long id) {
+        servicioService.eliminarServicio(id);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", true);
+        return ResponseEntity.ok(response);
+    }
 }
