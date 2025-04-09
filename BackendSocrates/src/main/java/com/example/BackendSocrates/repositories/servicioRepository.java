@@ -11,7 +11,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Repository
-public interface ServicioRepository extends JpaRepository<Servicio, Long> {
+public interface servicioRepository extends JpaRepository<Servicio, Long> {
 
     List<Servicio> findByTecnicoIdAndFechaServicio(Long tecnicoId, LocalDate fechaServicio);
 
@@ -24,4 +24,5 @@ public interface ServicioRepository extends JpaRepository<Servicio, Long> {
             @Param("horaInicio") LocalTime horaInicio,
             @Param("horaFin") LocalTime horaFin
     );
+
 }

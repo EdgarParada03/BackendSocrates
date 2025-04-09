@@ -1,7 +1,6 @@
 package com.example.BackendSocrates.services;
 
 import com.example.BackendSocrates.model.Servicio;
-import com.example.BackendSocrates.repositories.ServicioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public class ServicioService {
 
     @Autowired
-    private ServicioRepository servicioRepository;
+    private com.example.BackendSocrates.repositories.servicioRepository servicioRepository;
 
     public Servicio registrarServicio(Servicio servicio) {
         // Calcular la hora de fin (30 minutos después de la hora de inicio)
