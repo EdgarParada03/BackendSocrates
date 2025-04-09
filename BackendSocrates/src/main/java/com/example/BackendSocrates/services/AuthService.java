@@ -28,8 +28,8 @@ public class AuthService {
 
             if (cargo != null && usuario.getCargo().equalsIgnoreCase("administrador")) {
                 response.put("userType", "administrador");
-            } else if (cargo != null && usuario.getCargo().equalsIgnoreCase("secretaria")) {
-                response.put("userType", "secretaria");
+            } else if (cargo != null && usuario.getCargo().equalsIgnoreCase("SECRETARIA")) {
+                response.put("userType", "SECRETARIA");
             }
         } else {
             response.put("message", "Invalid credentials");
