@@ -12,11 +12,8 @@ import java.util.List;
 public interface ServicioRepository extends JpaRepository<Servicio, Long> {
 
     @Query("SELECT s FROM servicios s WHERE s.tecnico.id = :tecnicoId AND s.fechaServicio = :fecha AND " +
-            ":horaInicio < FUNCTION('ADDTIME', s.horaServicio, '00:30:00') AND " +
-            "FUNCTION('ADDTIME', :horaInicio, '00:30:00') > s.horaServicio")
-    List<Servicio> verificarDisponibilidad(
-            @Param("tecnicoId") Long tecnicoId,
-            @Param("fecha") LocalDate fecha,
-            @Param("horaInicio") LocalTime horaInicio
-    );
+            "(:hora BETWEEN s.horaServicio AND s.horaServicio.plusMinutes(29))")
+    List<Servicio> verificarDisponibilidad(@Param("tecnicoId") Long tecnicoId,
+                                           @Param("fecha") LocalDate fecha,
+                                           @Param("hora") LocalTime hora);
 }
