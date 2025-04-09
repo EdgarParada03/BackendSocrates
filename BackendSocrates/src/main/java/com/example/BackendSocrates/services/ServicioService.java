@@ -15,20 +15,23 @@ public class ServicioService {
     private ServicioRepository servicioRepository;
 
     public Servicio registrarServicio(Servicio servicio) {
-        // Validar si el técnico ya tiene un servicio en ese horario
-        List<Servicio> conflictos = servicioRepository.verificarDisponibilidad(
+        List<Servicio> existentes = servicioRepository.findByTecnicoIdAndFechaServicio(
                 servicio.getTecnico().getId(),
-                servicio.getFechaServicio(),
-                servicio.getHoraServicio()
+                servicio.getFechaServicio()
         );
 
-        if (!conflictos.isEmpty()) {
-            throw new RuntimeException("El técnico ya tiene un servicio asignado en ese horario.");
-        }
+        LocalTime horaInicioNueva = servicio.getHoraServicio();
+        LocalTime horaFinNueva = horaInicioNueva.plusMinutes(30);
 
-        // Calcular y mostrar horaFin (no se guarda, solo informativo si se necesita)
-        LocalTime horaFin = servicio.getHoraServicio().plusMinutes(30);
-        System.out.println("Hora fin calculada: " + horaFin);
+        for (Servicio existente : existentes) {
+            LocalTime horaInicioExistente = existente.getHoraServicio();
+            LocalTime horaFinExistente = horaInicioExistente.plusMinutes(30);
+
+            boolean seCruzan = !(horaFinNueva.isBefore(horaInicioExistente) || horaInicioNueva.isAfter(horaFinExistente));
+            if (seCruzan) {
+                throw new RuntimeException("El técnico ya tiene un servicio asignado en ese horario.");
+            }
+        }
 
         return servicioRepository.save(servicio);
     }
