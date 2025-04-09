@@ -32,13 +32,15 @@ public class Servicio {
     @JoinColumn(name = "tipo_plan_id", nullable = false)
     private TipoPlan tipoPlan;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "tecnico_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "cliente_id", nullable = false)
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
 
     public Servicio() {
     }
