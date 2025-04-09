@@ -16,13 +16,13 @@ public interface servicioRepository extends JpaRepository<Servicio, Long> {
     @Query("SELECT s FROM servicios s " +
             "WHERE s.tecnico.id = :tecnicoId " +
             "AND s.fechaServicio = :fecha " +
-            "AND ((s.horaServicio <= :horaInicio AND s.horaServicio + 30 > :horaInicio) " +
-            "OR (s.horaServicio < :horaFin AND s.horaServicio + 30 >= :horaFin) " +
-            "OR (s.horaServicio >= :horaInicio AND s.horaServicio + 30 <= :horaFin))")
+            "AND s.horaServicio BETWEEN :horaInicio AND :horaFin")
     List<Servicio> findOverlappingServices(
             @Param("tecnicoId") Long tecnicoId,
             @Param("fecha") LocalDate fecha,
             @Param("horaInicio") LocalTime horaInicio,
             @Param("horaFin") LocalTime horaFin
     );
+
+
 }
