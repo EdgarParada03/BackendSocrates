@@ -13,7 +13,6 @@ public class Servicio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
     @Column(name = "fecha_servicio", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "UTC")
     private LocalDate fechaServicio;
@@ -28,7 +27,7 @@ public class Servicio {
     @Column(name = "estado", nullable = false)
     private String estado;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false) // 🔁 corregido
     @JoinColumn(name = "tipo_plan_id", nullable = false)
     private TipoPlan tipoPlan;
 
@@ -36,11 +35,9 @@ public class Servicio {
     @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
 
-
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-
 
     public Servicio() {
     }
@@ -56,7 +53,7 @@ public class Servicio {
         this.cliente = cliente;
     }
 
-    // Getters y Setters...
+    // Getters y Setters
     public long getId() {
         return id;
     }
