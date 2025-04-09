@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = {"*"})
+@CrossOrigin(origins = {""})
 @RequestMapping("/api/auth")
 public class AuthController {
 
@@ -15,7 +15,7 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/login")
-    public Map<String, String> login(@RequestParam String numeroDocumento, @RequestParam String password,  @RequestParam String cargo) {
-        return authService.authenticate(numeroDocumento, password,cargo);
+    public Map<String, String> login(@RequestParam String numeroDocumento, @RequestParam String password, @RequestParam String cargo) {
+        return authService.authenticate(numeroDocumento, password, cargo);
     }
 }
