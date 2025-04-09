@@ -24,9 +24,15 @@ public class ServicioController {
     }
 
     @PostMapping("/servicios")
-    public ResponseEntity<Servicio> createServicio(@RequestBody Servicio servicio) {
-        Servicio creado = servicioService.registrarServicio(servicio);
-        return ResponseEntity.ok(creado);
+    public ResponseEntity<?> createServicio(@RequestBody Servicio servicio) {
+        try {
+            Servicio creado = servicioService.registrarServicio(servicio);
+            return ResponseEntity.ok(creado);
+        } catch (RuntimeException e) {
+            Map<String, String> response = new HashMap<>();
+            response.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(response);
+        }
     }
 
     @GetMapping("/servicios/{id}")
@@ -36,7 +42,7 @@ public class ServicioController {
 
     @DeleteMapping("/servicios/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteServicio(@PathVariable Long id) {
-        servicioService.eliminarServicio(id);
+        servicioRepository.deleteById(id);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", true);
         return ResponseEntity.ok(response);
