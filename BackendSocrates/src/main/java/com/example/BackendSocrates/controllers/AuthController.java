@@ -8,7 +8,7 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = {""})
-@RequestMapping("/api/auth")
+@RequestMapping("/api/v1")
 public class AuthController {
 
     @Autowired
