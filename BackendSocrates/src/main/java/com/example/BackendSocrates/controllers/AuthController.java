@@ -18,4 +18,9 @@ public class AuthController {
     public Map<String, String> login(@RequestParam String numeroDocumento, @RequestParam String password) {
         return authService.authenticate(numeroDocumento, password);
     }
+
+    @GetMapping("/prueba")
+    public String prueba() {
+        return "Hola desde el backend en Render";
+    }
 }
