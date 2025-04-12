@@ -16,24 +16,19 @@ public class AuthService {
     @Autowired
     private PersonaRepository personaRepository;
 
-    public Map<String, String> authenticate(String numeroDocumento, String password, String cargo) {
+    public Map<String, String> authenticate(String numeroDocumento, String password) {
         Map<String, String> response = new HashMap<>();
         Optional<Persona> persona = personaRepository.findByNumeroDocumento(numeroDocumento);
 
-
         if (persona.isPresent() && persona.get().getNumeroDocumento().equals(password)) {
-            response.put("message", "Login successful");
-
             Persona usuario = persona.get();
-
-            if (cargo != null && usuario.getCargo().equalsIgnoreCase("administrador")) {
-                response.put("userType", "administrador");
-            } else if (cargo != null && usuario.getCargo().equalsIgnoreCase("secretaria")) {
-                response.put("userType", "secretaria");
-            }
+            response.put("message", "Login successful");
+            response.put("userType", usuario.getCargo().toLowerCase()); // administrador o secretaria
         } else {
             response.put("message", "Invalid credentials");
         }
+
         return response;
     }
+
 }
